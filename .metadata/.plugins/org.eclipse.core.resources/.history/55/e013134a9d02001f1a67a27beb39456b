@@ -1,0 +1,13 @@
+package com.ezen.test.domain;
+
+public class PagingVO {
+
+	// select * from board limit 0, 10;		0, 10의 데이터를 가져올 매개변수 생성
+	// 페이징 > pageNo / qty
+	// 검색 > type / keyword
+	
+	private int pageNo;
+	private int qty;	// 한 화면에 보여줄 게시글 수
+	
+	
+}

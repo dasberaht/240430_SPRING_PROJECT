@@ -1,0 +1,49 @@
+-- 2024-04-23
+--database 생성
+--mysql -uroot -pezen
+
+create database springtest;
+show databases;
+
+-- user 생성
+create user 'springUser'@'localhost' identified by 'mysql';
+
+-- user 권한부여
+grant all privileges on springtest.* to 'springUser'@'localhost';
+
+-- 권한설정 및 메모리반영
+flush privileges;
+
+-- user : springUser / password : mysql / db : springtest;
+
+
+--2024-04-23
+-- board table 생성
+create table board(
+bno int auto_increment,
+title varchar(200),
+writer varchar(200),
+content text,
+isDel varchar(10) default 'N',
+reg_date datetime default now(),
+read_count int,
+primary key(bno));
+
+
+--2024-04-24
+-- board table 수정
+alter table board modify read_count int default 0;
+-- 원래 값이 있었다면~
+update board set read_count=0;
+
+
+
+
+
+
+
+
+
+
+
+

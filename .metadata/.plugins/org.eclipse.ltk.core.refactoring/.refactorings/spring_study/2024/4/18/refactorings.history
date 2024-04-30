@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;spring_study/src/main/resources/mappers/fileMappe.xml&apos; to &apos;fileMapper.xml&apos;" description="Rename resource &apos;fileMappe.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/resources/mappers/fileMappe.xml" name="fileMapper.xml" stamp="1714372323421" updateReferences="true"/>
+</session>

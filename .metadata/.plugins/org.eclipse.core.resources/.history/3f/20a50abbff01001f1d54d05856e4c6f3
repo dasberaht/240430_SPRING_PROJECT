@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+    
+<jsp:include page="../layout/header.jsp" />
+<div class="container-md">
+	<h4>BoardRegisterPage</h4>
+	<div>
+		<div class="mb-3">
+		  <label for="n" class="form-label">bno</label>
+		  <input type="text" class="form-control" name="bno" id="n" placeholder="bno" value="${bvo.bno }" readonly="readonly">
+		</div>
+		<div class="mb-3">
+		  <label for="t" class="form-label">title</label>
+		  <input type="text" class="form-control" name="title" id="t" placeholder="title" value="${bvo.title }">
+		</div>
+		<div class="mb-3">
+		  <label for="w" class="form-label">writer</label>
+		  <input type="text" class="form-control" name="writer" id="w" placeholder="writer" value="${bvo.writer }" readonly="readonly">
+		</div>
+		<div class="mb-3">
+		  <label for="c" class="form-label">content</label>
+		  <textarea class="form-control"  aria-label="With textarea" id="c" name="content" placeholder="content" readonly="readonly">${bvo.content }</textarea>
+		</div>
+		<div class="mb-3">
+		  <label for="r" class="form-label">reg_date</label>
+		  <input type="text" class="form-control" name="reg_date" id="r" placeholder="reg_date" value="${bvo.reg_date }" readonly="readonly">
+		</div>
+		<div class="mb-3">
+		  <label for="rc" class="form-label">read_count</label>
+		  <input type="text" class="form-control" name="read_count" id="rc" placeholder="read_count" value="${bvo.read_count }" readonly="readonly">
+		</div>
+		<a><button type="button" class="btn btn-secondary">수정</button></a>
+		<a><button type="button" class="btn btn-secondary">게시글</button></a>
+		<a><button type="button" class="btn btn-danger">삭제</button></a>
+
+	</div>
+</div>
+
+<jsp:include page="../layout/footer.jsp" />
