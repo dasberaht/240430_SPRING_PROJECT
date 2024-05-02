@@ -95,7 +95,7 @@
 		
 		
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-		<button type="submit" class="btn btn-secondary" id="regBtn">수정</button>
+		<button type="submit" class="btn btn-warning" id="regBtn">수정</button>
 		<a href="/board/detail?bno=${bvo.bno }"><button type="button" class="btn btn-secondary">돌아가기</button></a>
 		<a href="/board/list"><button type="button" class="btn btn-secondary">게시글</button></a>
 		</div>

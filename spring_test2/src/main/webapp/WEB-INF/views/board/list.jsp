@@ -7,8 +7,8 @@
 	<div class="container-md">
 		<h4>BoardListpage</h4>
 		
-		<!-- 검색 영역 -->
-		<%-- <form action="/board/list" method="get">
+		<!-- 검색 영역 : 기존의 list메서드를 활용하여 코드를 간소화하기 위해 getmapping을 사용 -->
+		<form action="/board/list" method="get">
 			<div class="input-group">
 			<select class="form-select" name="type" id="inputGroupSelect04" aria-label="Example select with button addon">
 			    <option ${ph.pgvo.type == null ? 'selected' : '' }>Type</option>
@@ -33,7 +33,7 @@
 			  </button>
 			  
 			</div>
-		</form> --%>
+		</form>
 		
 		<table class="table">
 			<thead>
@@ -77,31 +77,30 @@
 		</div>
 		
 		<!-- 페이지네이션 영역 -->
-<%-- 		<nav aria-label="Page navigation example">
+ 		<nav aria-label="Page navigation example">
 		  <ul class="pagination justify-content-center">
-		  	<!-- $type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword} -->
-		  	<c:if test="${ph.prev }">
-		    <li class="page-item">
+		  	<%-- <c:if test="${ph.prev }"> --%>
+		    <li class="page-item ${ph.prev eq false ? 'disabled' : '' }" >
 		      <a class="page-link" href="/board/list?pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Previous">
 		      	<span aria-hidden="true">Previous</span>
 		      </a>
 		    </li>
-		    </c:if>
+		    <%-- </c:if> --%>
 		    
 		    <c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">  
-		    <li class="page-item"><a class="page-link" href="/board/list?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a></li>
+		    	<li class="page-item ${ph.pgvo.pageNo eq i ? 'active' : '' }"><a class="page-link" href="/board/list?pageNo=${i }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}">${i }</a></li>
 		    </c:forEach>
 		    
-		    <c:if test="${ph.next }">
-		    <li class="page-item">
+		    <%-- <c:if test="${ph.next }"> --%>
+		    <li class="page-item ${ph.next eq false ? 'disabled' : '' }">
 		      <a class="page-link" href="/board/list?pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty}&type=${ph.pgvo.type}&keyword=${ph.pgvo.keyword}" aria-label="Next">
 		      	<span aria-hidden="true">Next</span>
 		      </a>
 		    </li>
-		    </c:if>
+		    <%-- </c:if> --%>
 		    
 		  </ul>
-		</nav> --%>
+		</nav>
 		
 	</div>
 

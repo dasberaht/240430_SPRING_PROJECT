@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ezen.www.domain.BoardVO;
+import com.ezen.www.domain.PagingVO;
 import com.ezen.www.repository.BoardDAO;
 
 import lombok.RequiredArgsConstructor;
@@ -24,9 +25,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> list(BoardVO bvo) {
+	public List<BoardVO> list(PagingVO pgvo) {
 		log.info(">> Board insert Service in !!!");
-		return bdao.list(bvo);
+		return bdao.list(pgvo);
 	}
 
 	@Override
@@ -45,6 +46,12 @@ public class BoardServiceImpl implements BoardService {
 	public void delete(int bno) {
 		log.info(">> Board delete Service in !!!");
 		bdao.delete(bno);
+	}
+
+	@Override
+	public int getTotal(PagingVO pgvo) {
+		log.info(">> Board Total Service in !!!");
+		return bdao.getTotal(pgvo);
 	}
 
 

@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.www.domain.BoardVO;
+import com.ezen.www.domain.PagingVO;
+import com.ezen.www.handler.PagingHandler;
 import com.ezen.www.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -35,11 +38,21 @@ public class BoardController {
 	}
 	
 	@GetMapping("/list")
-	public String list(BoardVO bvo, Model m) {
-		List<BoardVO> list = bsv.list(bvo);
+	public String list(Model m, PagingVO pgvo) {			// BoardVO bvo >>> PagingVO pgvo로 변경
+		log.info("> board list pgvo {}", pgvo);
+		List<BoardVO> list = bsv.list(pgvo);
 		// 가져온 리스트를 >>> /board/list.jsp로 전달
 		m.addAttribute("list", list);
 
+		
+		// totalCount 구해오기(pgvo는 검색 시 사용해야하므로 미리 설정)
+		int totalCount = bsv.getTotal(pgvo);
+		
+		// PagingHandler 설정
+		PagingHandler ph = new PagingHandler(pgvo, totalCount);
+		m.addAttribute("ph", ph);
+				
+		
 		return "/board/list";
 	}
 		
@@ -50,9 +63,10 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO bvo) {
-		bsv.modify(bvo);		
-		return "redirect:/board/detail?bno="+bvo.getBno();
+	public String modify(BoardVO bvo, RedirectAttributes re) {
+		bsv.modify(bvo);
+		re.addAttribute("bno", bvo.getBno());
+		return "redirect:/board/detail";
 	}
 	
 	@GetMapping("/delete")
