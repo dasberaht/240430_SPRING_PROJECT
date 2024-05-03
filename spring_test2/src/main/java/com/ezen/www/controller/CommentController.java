@@ -1,15 +1,16 @@
 package com.ezen.www.controller;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ezen.www.domain.CommentVO;
@@ -50,6 +51,40 @@ public class CommentController {
 		
 		return new ResponseEntity<PagingHandler>(ph, HttpStatus.OK);
 	}
+	
+//	@PutMapping(value = "/modify", consumes = "application/json", produces = MediaType.TEXT_PLAIN_VALUE)
+//	public ResponseEntity<String> modify(@RequestBody CommentVO cvo){
+//		log.info("> Comment modify cvo {}", cvo);
+//		int isOk = csv.modify(cvo);
+//		
+//		return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK) : new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+//	}
+	
+//	@DeleteMapping(value = "/{cno}", produces = MediaType.TEXT_PLAIN_VALUE)
+//	public ResponseEntity<String> delete(@PathVariable("cno")int cno){
+//		log.info("> Comment delete cno {}", cno);
+//		int isOk = csv.delete(cno);
+//		
+//		return isOk > 0 ? new ResponseEntity<String>("1", HttpStatus.OK) : new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+//	}
+	
+	
+	// responseBody 사용방식(body만 보낼 때)
+	@ResponseBody
+	@PutMapping("/modify")
+	public String modify(@RequestBody CommentVO cvo) {
+		log.info("> Comment modify cvo {}", cvo);
+		int isOk = csv.modify2(cvo);
+		return isOk > 0 ? "1" : "0";
+	}
+	
+	@ResponseBody
+	@DeleteMapping("/{cno}")
+	public String delete(@PathVariable("cno")int cno) {
+		int isOk = csv.delete2(cno);
+		return isOk > 0 ? "1" : "0";
+	}
+	
 	
 	
 	

@@ -17,4 +17,22 @@
  		select count(cno) from comment where bno=#{bno}
  	</select>
  	
+ 	<update id="modify">
+ 		update comment set content=#{content} where cno=#{cno} 
+ 	</update>
+ 	
+ 	<update id="modify2">
+ 		update comment set content=#{content} where cno=#{cno} 
+ 	</update>
+ 	
+<!--  	<delete id="delete">
+ 		delete from comment where cno=#{cno}
+ 	</delete> -->
+ 	
+ 	<delete id="delete2">
+ 		delete from comment where cno=#{cno}
+ 	</delete>
+ 	
+ 	
+ 	
  </mapper>

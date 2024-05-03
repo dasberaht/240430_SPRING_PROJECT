@@ -9,6 +9,14 @@ public interface CommentService {
 	int post(CommentVO cvo);
 
 	PagingHandler list(int bno, PagingVO pgvo);
+
+	int modify(CommentVO cvo);
+
+	int delete(int cno);
+
+	int modify2(CommentVO cvo);
+
+	int delete2(int cno);
 	
 	
 	

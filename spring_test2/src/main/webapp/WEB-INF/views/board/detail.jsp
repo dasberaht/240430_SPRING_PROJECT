@@ -94,13 +94,13 @@
 				<div class="fw-bold">Writer</div>
 				comment-content
 			</div>
-			<span class="badge rounded-pill text-bg-warning">regDate</span>
+			<span class="badge rounded-pill text-bg-success">regDate</span>
 		  </li>
 		</ul>
 		
 		<!-- 댓글 더보기 버튼 -->
-		<div class="input-group mb-3">
-			<button type="button" id="moreBtn" data-page="1" class="btn btn-outline-dark btn-sm" style="visibility:hidden"> More + </button>
+		<div class="d-grid gap-2 d-md-flex justify-content-md-center">
+			<button type="button" id="moreBtn" data-page="1" class="btn btn-dark btn-sm" style="visibility:hidden"> More + </button>
 		</div>
 		
 		<!-- 모달 창 -->
@@ -129,7 +129,7 @@
 
 
 		<!-- 댓글 출력(아코디언) -->
-<!-- 		<div class="accordion" id="accordionPanelsStayOpenExample">
+<!--/* <div class="accordion" id="accordionPanelsStayOpenExample">
 		  <div class="accordion-item">
 		    <h2 class="accordion-header">
 		      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

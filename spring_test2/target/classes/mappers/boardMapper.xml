@@ -32,6 +32,11 @@
 		<include refid="search" />
 	</select>
 	
+	<select id="selectOneBno" resultType="int">
+		select max(bno) from board where isDel='N'
+	</select>
+	
+	
 
 	<!-- 검색 영역(동적인 검색을 위해 쿼리 짜기) -->
 	<!-- suffixOverrides="or" : foreach영역이 끝나고 나면, or을 지우도록 처리 -->

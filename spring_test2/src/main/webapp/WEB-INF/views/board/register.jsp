@@ -11,7 +11,7 @@
 <div class="container-md">
 	<h4>BoardRegisterPage</h4>
 	<div>
-		<form action="/board/insert" method="post">
+		<form action="/board/insert" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
 			  <label for="t" class="form-label">title</label>
 			  <input type="text" class="form-control" name="title" id="t" placeholder="title">
@@ -25,7 +25,7 @@
 			  <textarea class="form-control"  aria-label="With textarea" id="c" name="content" placeholder="content"></textarea>
 			</div>
 			
-			<%--
+			
 			<!-- file 입력 라인 -->
 			<div class="mb-3">
 			  <label for="file" class="form-label">files</label>
@@ -37,7 +37,7 @@
 			<div class="mb-3" id="fileZone">
 				
 			</div>
-			 --%>
+			
 			
 			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 			<button type="submit" class="btn btn-secondary" id="regBtn">등록</button>
@@ -48,7 +48,7 @@
 	</div>
 </div>
 
-<!-- <script type="text/javascript" src="/resources/js/boardRegister.js"></script> -->
+<script type="text/javascript" src="/re/js/boardRegister.js"></script>
 
 
 

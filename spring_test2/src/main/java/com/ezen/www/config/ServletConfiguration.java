@@ -1,6 +1,9 @@
 package com.ezen.www.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
@@ -17,7 +20,7 @@ public class ServletConfiguration implements WebMvcConfigurer {
 		// TODO Auto-generated method stub
 		// resources 경로설정(+파일업로드 경로설정 추가 예정)
 		registry.addResourceHandler("/re/**").addResourceLocations("/resources/");
-		WebMvcConfigurer.super.addResourceHandlers(registry);
+		registry.addResourceHandler("/up/**").addResourceLocations("file:///D:\\\\W\\\\Spring\\\\_myProject\\\\_java\\\\_fileUpload\\");
 	}
 
 	@Override
@@ -31,8 +34,13 @@ public class ServletConfiguration implements WebMvcConfigurer {
 		registry.viewResolver(viewResolver);
 	}
 	
-	//multipartResolver 설정(추후진행)
-	
+	// multipartResolver 설정(추후진행)
+	// multipartResolver의 bean 이름은 반드시 'multipartResolver'를 사용한다.
+	@Bean(name = "multipartResolver")
+	public MultipartResolver getMultipartResolver() {
+		StandardServletMultipartResolver multipartResolver = new StandardServletMultipartResolver();
+		return multipartResolver;
+	}
 	
 	
 

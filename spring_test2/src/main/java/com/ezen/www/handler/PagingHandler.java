@@ -28,6 +28,7 @@ public class PagingHandler {
 	
 	
 	// 생성자의 모든 값들이 계산되어 설정되어야하므로, 기본생성자(임의생성자)를 넣지 않는다.
+	// 리스트 관련
 	public PagingHandler(PagingVO pgvo, int totalCount) {
 		this.pgvo = pgvo;
 		this.totalCount = totalCount;

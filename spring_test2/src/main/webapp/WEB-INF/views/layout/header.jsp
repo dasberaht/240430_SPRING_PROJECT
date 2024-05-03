@@ -27,7 +27,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/board/list">게시글</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="/board/register">글쓰기</a>
+        </li>
         
 		<%--         
         <c:if test="${ses.id == null }">
@@ -40,9 +42,7 @@
         </c:if>
         
         <c:if test="${ses.id != null }">
-        <li class="nav-item">
-          <a class="nav-link" href="/board/register">글쓰기</a>
-        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/member/modify">${ses.id}(${ses.email })</a>
         </li>
