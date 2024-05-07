@@ -19,7 +19,7 @@ document.getElementById('cmtAddBtn').addEventListener('click', ()=>{
 
             postCommentToServer(cmtData).then(result => {
                 if(result == '1'){
-                    alert("등록완료");
+                    alert("등록 완료");
                     document.getElementById('cmtText').value="";
                     spreadCommentList(bnoVal);
                 }

@@ -7,7 +7,7 @@
 <div class="container-md">
 	<h4>BoardDetailPage</h4>
 		
-		<%-- <c:set value="${bdto.bvo }" var="bvo"></c:set> --%>
+		<c:set value="${bdto.bvo }" var="bvo"></c:set>
 		
 		<div class="mb-3">
 		  <label for="n" class="form-label">bno</label>
@@ -34,8 +34,11 @@
 		  <input type="text" class="form-control" name="read_count" id="rc" placeholder="read_count" value="${bvo.readCount }" readonly="readonly">
 		</div>
 		
+		<br>
+		
 		<!-- upload file 출력 영역 -->
-		<%-- <c:set value="${bdto.flist }" var="flist" />
+		<c:set value="${bdto.flist }" var="flist" />
+		
 		<div class="mb-3">
 			<ul class="list-group">
 				<!-- 파일 개수만큼 li를 반복하여 파일 표시 > 타입이 1인 경우만 표시 -->
@@ -43,30 +46,34 @@
 				<c:forEach items="${flist }" var="fvo">
 		  			<li class="list-group-item">
 		  				<c:choose>
-		  					<c:when test="${fvo.file_type > 0 }">
+		  					<c:when test="${fvo.fileType > 0 }">
 		  						<div>
 		  							<!-- src : /uplaod/는 servlet-context에서 설정한 경로 -->
 		  							<!-- ex. 파일명 : 467615d0-d63b-4397-a682-b50a6ea9c77b_testimage.jpg -->
-		  							<img alt="No image" src="/upload/${fvo.save_dir }/${fvo.uuid}_th_${fvo.file_name}">
+		  							<img alt="No image" src="/up/${fvo.saveDir }/${fvo.uuid}_th_${fvo.fileName}">
 		  						</div>
 		  					</c:when>
 		  					<c:otherwise>
 		  						<div>
-		  							<!-- 파일이 없는 경우(파일타입이 0인 경우) : 보통 icon 모양 넣는 것이 보편적 -->
-		  							
+		  							<!-- 파일이 없는 경우(파일타입이 0인 경우; image 파일이 아닌 경우) : 보통 icon 모양 넣는 것이 보편적 -->
+		  							<a href="/up/${fvo.saveDir }/${fvo.uuid}_${fvo.fileName}" download="${fvo.fileName}">
+		  							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-files" viewBox="0 0 16 16">
+								  	<path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1M3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/>
+									</svg>
+									</a>
 		  						</div>
 		  					</c:otherwise>
 		  				</c:choose>
 		  				<div>
 		  					<!-- 파일상세내용 : 파일이름, 작성일, 파일사이즈 -->
-		  					<div>${fvo.file_name }</div>
-		  					${fvo.reg_date }
-		  					<span class="badge text-bg-warning">${fvo.file_size } Byte</span>
+		  					<div>${fvo.fileName }</div>
+		  					${fvo.regDate }
+		  					<span class="badge text-bg-warning">${fvo.fileSize } Byte</span>
 		  				</div>
 		  			</li>
 	  			</c:forEach>
 			</ul>
-		</div> --%>
+		</div>
 		
 		
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -91,7 +98,7 @@
 		<ul class="list-group list-group-flush" id="cmtListArea">
 		  <li class="list-group-item">
 			<div class="input-group mb-3">
-				<div class="fw-bold">Writer</div>
+				<div class="fw-bold">Writer</div><br>
 				comment-content
 			</div>
 			<span class="badge rounded-pill text-bg-success">regDate</span>

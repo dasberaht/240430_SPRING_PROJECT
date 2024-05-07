@@ -56,16 +56,39 @@ public class BoardServiceImpl implements BoardService {
 		return bdao.list(pgvo);
 	}
 
+	@Transactional			// 둘 중 하나라도 오류가 발생할 경우, 처리가 되지않도록 설정하는 기능
 	@Override
-	public BoardVO detail(int bno) {
+	public BoardDTO detail(int bno) {
 		log.info(">> Board detail Service in !!!");
-		return bdao.detail(bno);
+		
+		// bvo, flist를 묶어서 DTO를 리턴
+		BoardVO bvo = bdao.detail(bno);
+		List<FileVO> flist = fdao.getList(bno);
+		BoardDTO bdto = new BoardDTO(bvo, flist);
+		
+		
+		
+		return bdto;
 	}
 
 	@Override
-	public void modify(BoardVO bvo) {
+	public void modify(BoardDTO bdto) {
 		log.info(">> Board modify Service in !!!");
-		bdao.modify(bvo);
+		int isOk = bdao.modify(bdto.getBvo());
+		
+		//파일 수정
+		if(bdto.getFlist() == null) {
+			return;
+		}
+		
+		if(isOk > 0 && bdto.getFlist().size() > 0) {
+			for(FileVO fvo : bdto.getFlist()) {
+				fvo.setBno(bdto.getBvo().getBno());
+				isOk *= fdao.insertFile(fvo);
+			}
+		}
+		
+		
 	}
 
 	@Override
@@ -78,6 +101,12 @@ public class BoardServiceImpl implements BoardService {
 	public int getTotal(PagingVO pgvo) {
 		log.info(">> Board Total Service in !!!");
 		return bdao.getTotal(pgvo);
+	}
+
+	@Override
+	public int deleteFile(String uuid) {
+		log.info(">> Board deleteFile Service in !!!");
+		return fdao.deleteFile(uuid);
 	}
 
 

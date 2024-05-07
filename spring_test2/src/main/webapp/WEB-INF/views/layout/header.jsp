@@ -30,27 +30,31 @@
         <li class="nav-item">
           <a class="nav-link" href="/board/register">글쓰기</a>
         </li>
-        
-		<%--         
-        <c:if test="${ses.id == null }">
-        <li class="nav-item">
-          <a class="nav-link" href="/member/register">회원가입</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/member/login">로그인</a>
-        </li>
-        </c:if>
-        
-        <c:if test="${ses.id != null }">
 
+        
+		       
+		       
+ 
+        <li class="nav-item">
+          <a class="nav-link" href="/user/register">회원가입</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/user/login">로그인</a>
+        </li>
+        
+        
+        
+
+        
+        <%-- <c:if test="${ses.id != null }">
         <li class="nav-item">
           <a class="nav-link" href="/member/modify">${ses.id}(${ses.email })</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/member/logout">로그아웃</a>
         </li>
-        </c:if>
-		--%>
+        </c:if> --%>
+		
 		
       </ul>
     </div>
