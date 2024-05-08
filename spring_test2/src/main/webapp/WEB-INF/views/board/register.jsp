@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +13,25 @@
 <jsp:include page="../layout/header.jsp" />
 <div class="container-md">
 	<h4>BoardRegisterPage</h4>
+	
+	<!-- 로그인 시 writer >>> nickName 출력 설정 -->
+	<sec:authentication property="principal.uvo.nickName" var="authNick"/>
+	
 	<div>
 		<form action="/board/insert" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
 			  <label for="t" class="form-label">title</label>
 			  <input type="text" class="form-control" name="title" id="t" placeholder="title">
 			</div>
+			
+			
+
 			<div class="mb-3">
 			  <label for="w" class="form-label">writer</label>
-			  <input type="text" class="form-control" name="writer" id="w" placeholder="writer">
+			<input type="text" class="form-control" name="writer" id="w" placeholder="writer" value="${authNick }" readonly="readonly">
 			</div>
+			
+			
 			<div class="mb-3">
 			  <label for="c" class="form-label">content</label>
 			  <textarea class="form-control"  aria-label="With textarea" id="c" name="content" placeholder="content"></textarea>

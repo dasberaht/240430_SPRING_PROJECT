@@ -8,5 +8,37 @@
  		insert into user(email, pwd, nick_name) values(#{email}, #{pwd}, #{nickName})
  	</insert>
  
+ 	<insert id="insertAuthInit">
+ 		insert into auth_user values(#{email}, 'ROLE_USER')
+ 	</insert>
+ 
+ 	<select id="selectEmail" resultType="com.ezen.www.domain.UserVO">
+ 		select * from user where email=#{email}
+ 	</select>
+ 	
+ 	<select id="selectAuths" resultType="com.ezen.www.domain.AuthVO">
+ 		select * from auth_user where email=#{email}
+ 	</select>
+ 
+ 	<update id="updateLastLogin">
+ 		update user set last_login = now() where email=#{email}
+ 	</update>
+ 	
+<!--  	<select id="selectUserList" resultType="com.ezen.www.domain.UserVO">
+ 		select * from user
+ 	</select> -->
+ 	
+ 	<select id="getList" resultType="com.ezen.www.domain.UserVO">
+ 		select * from user
+ 	</select>
+ 	
+ 	<update id="modify">
+ 		update user set nick_name = #{nickName}, reg_date = now() where email = #{email}
+ 	</update>
+ 	
+ 	
+ 	
+ 	
+
  
  </mapper>

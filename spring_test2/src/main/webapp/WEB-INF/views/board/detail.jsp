@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
     
 <jsp:include page="../layout/header.jsp" />
 <div class="container-md">
@@ -86,10 +86,13 @@
 		<hr>
 		<br>
 	
+
+		<sec:authentication property="principal.uvo.nickName" var="authNick"/>
+
 		<!-- Comment line -->
- 		<!-- 댓글 등록  -->
+ 		<!-- 댓글 등록  -->		
 		<div class="input-group mb-3">
-		  <span class="input-group-text" id="cmtWriter">Tester</span>
+		  <span class="input-group-text" id="cmtWriter">${authNick }</span>
 		  <input type="text" id="cmtText" class="form-control" placeholder="add comment" aria-label="Username" aria-describedby="basic-addon1">
 		  <button type="button" id="cmtAddBtn" class="btn btn-secondary">등록</button>
 		</div>
