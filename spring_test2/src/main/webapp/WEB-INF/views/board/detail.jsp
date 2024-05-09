@@ -86,8 +86,9 @@
 		<hr>
 		<br>
 	
-
+		<sec:authorize access="isAuthenticated()">
 		<sec:authentication property="principal.uvo.nickName" var="authNick"/>
+		</sec:authorize>
 
 		<!-- Comment line -->
  		<!-- 댓글 등록  -->		
@@ -96,7 +97,6 @@
 		  <input type="text" id="cmtText" class="form-control" placeholder="add comment" aria-label="Username" aria-describedby="basic-addon1">
 		  <button type="button" id="cmtAddBtn" class="btn btn-secondary">등록</button>
 		</div>
-		
 		<!-- 댓글 출력 -->
 		<ul class="list-group list-group-flush" id="cmtListArea">
 		  <li class="list-group-item">
@@ -133,7 +133,7 @@
 		  </div>
 		</div>
 		
-		
+
 		
 		
 

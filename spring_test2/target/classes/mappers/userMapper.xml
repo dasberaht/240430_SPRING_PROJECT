@@ -33,11 +33,31 @@
  	</select>
  	
  	<update id="modify">
- 		update user set nick_name = #{nickName}, reg_date = now() where email = #{email}
+ 		update user set nick_name=#{nickName}, reg_date = now() where email=#{email}
+ 	</update>
+ 	
+ 	<update id="pwdmodify">
+ 		update user set nick_name=#{nickName}, pwd=#{pwd}, reg_date = now() where email=#{email}
  	</update>
  	
  	
+ 	<delete id="authdelete">
+ 		delete from auth_user where email=#{email}
+ 	</delete>
  	
+ 	<delete id="delete">
+ 		delete from user where email=#{email}
+ 	</delete>
+ 	
+ 	
+ 	<!-- 중복아이디 체크용 -->
+ 	<select id="getUserEmail" resultType="com.ezen.www.domain.UserVO">
+ 		select * from user where email=#{email}
+ 	</select>
+ 	
+ 	<select id="chkemail" resultType="com.ezen.www.domain.UserVO">
+ 		select * from user where email=#{email}
+ 	</select>
  	
 
  

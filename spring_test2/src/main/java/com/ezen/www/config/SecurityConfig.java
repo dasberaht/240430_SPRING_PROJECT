@@ -75,7 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// .anyRequest().authenticated(); : 해당 모든 곳은 권한이 있어야 접근 가능하여야  
 		http.authorizeRequests()
 		.antMatchers("/user/list").hasRole("ADMIN")
-		.antMatchers("/", "/board/list", "/board/detail", "/comment/**", "/up/**", "/re/**", "/user/register", "/user/login").permitAll()
+		.antMatchers("/", "/board/list", "/board/detail", "/comment/**", "/up/**", "/re/**", "/user/register", "/user/login", "/user/chkemail/*").permitAll()
 		.anyRequest().authenticated();
 		
 		

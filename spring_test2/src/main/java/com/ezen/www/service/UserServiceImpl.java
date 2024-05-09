@@ -2,8 +2,11 @@ package com.ezen.www.service;
 
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.www.domain.UserVO;
 import com.ezen.www.repository.UserDAO;
@@ -17,14 +20,15 @@ import lombok.extern.slf4j.Slf4j;
 public class UserServiceImpl implements UserService {
 
 	private final UserDAO udao;
+	
+	private final BCryptPasswordEncoder bcEncoder;
 
 	@Transactional
 	@Override
 	public int register(UserVO uvo) {
 		log.info(">> UserService register in");
 		int isOK = udao.register(uvo);
-		// 권한 추가(Transactional 사용 시 if값을 따로 주지 않아도 된다.)
-		
+		// 권한 추가(Transactional 사용 시 if값을 따로 주지 않아도 된다.)		
 		return udao.insertAuthInit(uvo.getEmail()); 
 	}
 
@@ -46,8 +50,39 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void modify(UserVO uvo) {
-		udao.modify(uvo);
+		if(uvo.getPwd()==null || uvo.getPwd().length()==0 || uvo.getPwd().equals("")) {
+			udao.modify(uvo);
+		}else {
+			uvo.setPwd(bcEncoder.encode(uvo.getPwd()));
+			udao.pwdmodify(uvo);
+		}
+		log.info(">> 수정된 uvo {}", uvo);
+		
+		
 	}
+
+	@Transactional
+	@Override
+	public void delete(String name) {
+		udao.authdelete(name);
+		udao.delete(name);
+		
+	}
+
+	@Override
+	public UserVO getUserEmail(String email) {
+
+		return udao.getUserEmail(email);
+	}
+
+	@Override
+	public UserVO chkemail(String email) {
+	
+		return udao.chkemail(email);
+	}
+
+
+
 
 
 //	@Override

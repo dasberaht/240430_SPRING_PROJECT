@@ -27,7 +27,7 @@
 						    	</c:forEach>
 						    </li>							
 					  </ul>
-					<button type="button" class="btn btn-secondary btn-sm">회원권한설정</button>								 
+					<button type="button" class="btn btn-secondary btn-sm">회원권한설정</button>
 			</div>
 		</c:forEach>
 	</div>

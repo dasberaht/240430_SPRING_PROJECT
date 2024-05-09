@@ -98,7 +98,8 @@ public class MemberController {
 		
 		// 리터값이 내부 메서드를 리턴하기 때문에 Model 속성을 사용할 수 없다.
 		// 따라서, RedirectAttributes 속성을 사용하여 msg를 출력할 수 있다.
-		re.addFlashAttribute("msg_remove", "1");
+		//		re.addFlashAttribute("msg_remove", "1");
+		re.addAttribute("msg_remove", "1");
 		
 		
 		

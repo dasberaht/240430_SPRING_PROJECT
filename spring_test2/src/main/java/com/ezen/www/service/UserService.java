@@ -14,6 +14,15 @@ public interface UserService {
 
 	void modify(UserVO uvo);
 
+	void delete(String name);
+
+	UserVO getUserEmail(String email);
+
+	UserVO chkemail(String email);
+
+
+
+
 	
 
 //	int updateLastLogin(String authEmail);

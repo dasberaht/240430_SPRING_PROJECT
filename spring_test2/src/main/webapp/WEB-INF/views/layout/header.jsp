@@ -71,7 +71,7 @@
         		
         		<c:otherwise>
 			        <li class="nav-item">
-			          <a class="nav-link" href="/'user/modify">회원정보수정 ${authNick }(${authEmail })</a>
+			          <a class="nav-link" href="/user/modify">회원정보수정 ${authNick }(${authEmail })</a>
 			        </li>        		
         		</c:otherwise>
         	</c:choose>
@@ -104,10 +104,7 @@
 document.getElementById('logoutLink').addEventListener('click', (e)=>{
 	e.preventDefault();
     document.getElementById('logoutForm').submit();
-});	
-/* document.getElementById('logoutLink').addEventListener('click', ()=>{
-    document.getElementById('logoutForm').submit();
-});	 */
+});
 
 </script>
 
